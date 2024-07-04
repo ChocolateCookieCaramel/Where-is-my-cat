@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="inventory.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+//volume
+
+$('#clocktick').prop("volume", 0.2);
+
+
+$('img#hunter').width(200).height(210).css({left:0});
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#clocktick').get(0).play();//plays audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+	
+$('div#dialog').click(events_handler);
+    var events_counter = 0;
+		function events_handler() {
+			events_counter++;
+        
+		
+
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>Hunter:</b> I guess I\'ll check if the thief is still there at school.</p>');
+
+	}
+		
+	if (events_counter==2){
+	storeSound();
+		window.location="enemy1.html";
+		
+	}
+		
+}
+
+
+
+
+});
+	
+
+</script>
+</head>
+<body>
+
+<div id="stage3">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+		<div id="dialog"><p><b>Hunter:</b> ergh.. </p></div>
+</div>
+
+<audio loop src="music/clockticking.mp3" id="clocktick" class="bg_music"></audio>
+
+</body>
+</html>

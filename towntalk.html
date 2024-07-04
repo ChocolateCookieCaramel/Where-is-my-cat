@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="inventory.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+	
+	
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#town').get(0).play(); //audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+	$('img#hunter').width(150).height(170); //editing character on jquery
+
+	$('img#lettermini').hide();	//the letter
+	
+	$('img#hunter').animate({left:700, top:200},{duration:2000});//animating character
+	
+	$('div#dialog').click(events_handler);
+			var events_counter = 0;
+				function events_handler() {
+					events_counter++;
+        
+		
+
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>School Girl:</b> Yes, I was waiting for you to passby..</p>');
+	}
+		
+	if (events_counter==2){
+		$('div#dialog').html('<p><b>Hunter:</b> Why?? did you find new information about my cat?</p>');
+	}
+		
+	if (events_counter==3){
+		$('div#dialog').html('<p><b>School Girl:</b> Yes, I found them and I asked if they stole your cat.</p>');
+	}
+		
+	if (events_counter==4){
+		$('div#dialog').html('<p><b>Hunter:</b> What did they say??</p>');
+	}
+		
+	if (events_counter==5){
+		$('div#dialog').html('<p><b>School Girl:</b> One of them gave me a letter and told me to give it to you.. but-</p>');
+	}
+		
+	if (events_counter==6){
+		$('div#dialog').html('<p><b>Hunter:</b> But what??</p>');
+	}
+		
+	if (events_counter==7){
+		$('div#dialog').html('<p><b>School Girl:</b> I placed it in my bag and it got a little spoiled.. sorry..</p>');
+		$('img#lettermini').fadeIn();
+	}
+		
+	if (events_counter==8){
+		$('div#dialog').html('<p><b>Hunter:</b> Okay thanks. I\'ll figure it out once I\'m home. </p>');
+	}
+		
+	if (events_counter==9){
+		$('div#dialog').html('<p>Click on the letter to place it in your inventory. </p>');
+	 }
+	}
+	
+	setupInventory(); // only required on the first page
+	checkInventory(); // required on every page to check which items have been picked up
+
+	$('.clickable').click(function() {
+		$(this).fadeOut('fast');
+		var itemName = $(this).attr('id');
+		localStorage.setItem(itemName, 'true');
+		checkInventory();
+        window.location="towntalk2.html";
+		storeSound(); 
+
+	});
+	
+});
+	
+
+</script>
+</head>
+
+<body>
+<div id="stage16">
+	<img src="" id="vOn"/>
+	<img src="images/treetown.png" id="treetown"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+		<div id="dialog"><p><b>Hunter:</b> Oh you're still here. </p></div>
+		<div id="square24" class="square"></div>
+	<img src="images/lettermini.png" id="lettermini" class="clickable">
+</div>
+
+<div id="inventory">
+	<p id="inv">Inventory</p>
+	<div class="items"><img src="images/lettermini.png" id="inv-letter"/></div>
+</div> 
+
+<audio loop src="music/town.mp3" id="town" class="bg_music"></audio>
+
+</body>
+</html>

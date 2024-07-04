@@ -1,0 +1,161 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	 $('#fridge').get(0).play();//background audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+
+ 
+ //left arrow
+$('img#arrowl').click(function(){
+		window.location="page5.html";
+		  storeSound(); 
+    })
+	
+	.mouseover(function(){
+      $('#click').get(0).play();
+      });
+	  
+	// the blue squares 
+    $('div#square10').click(events_handler10);
+		var events_counter10 = 0;
+			function events_handler10() {
+				events_counter10++;
+		
+	if (events_counter10==1){
+		$('div#dialog').html('<p><b>Hunter:</b> She isn\'t there.</p>');
+	    }
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Then again why would she want to hide in the cold fridge. o.O</p>');
+		}
+	}
+		
+    $('div#square11').click(events_handler11);
+		var events_counter11 = 0;
+			function events_handler11() {
+				events_counter11++;
+		
+	if (events_counter11==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Kitty come here.</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Ergh.</p>');
+	}
+  }
+		
+$('div#square12').click(events_handler12);
+    var events_counter12 = 0;
+		function events_handler12() {
+			events_counter12++;
+		
+	if (events_counter12==1){
+		$('div#dialog').html('<p><b>Hunter:</b> I knew she wouldn\'t be in there.</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Let alone why would she even want to be in the oven??? o.O</p>');
+		}
+	}
+		
+  $('div#square13').click(events_handler13);
+    var events_counter13 = 0;
+     function events_handler13() {
+		events_counter13++;
+		
+	if (events_counter13==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Nope.</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Ergh.</p>');
+	}
+ }
+		
+ $('div#square14').click(events_handler14);
+    var events_counter14 = 0;
+     function events_handler14() {
+		events_counter14++;
+		
+	if (events_counter14==1){
+		$('div#dialog').html('<p><b>Hunter:</b> No -_-</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> -_-</p>');
+	}
+ }
+		
+$('div#square15').click(events_handler15);
+     var events_counter15 = 0;
+     function events_handler15() {
+		events_counter15++;
+		
+	if (events_counter15==1){
+		$('div#dialog').html('<p><b>Hunter:</b> She\'s not up there.</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> I already checked. -_-</p>');
+	}
+  }
+
+})
+</script>
+</head>
+<body>
+
+<div id="stage5">
+	<img src="" id="vOn"/>
+		<div class="square" id="square10"></div>
+		<div class="square" id="square11"></div>
+		<div class="square" id="square12"></div>
+		<div class="square" id="square13"></div>
+		<div class="square" id="square14"></div>
+		<div class="square" id="square15"></div>
+	<img src="images/arrowl.png" id="arrowl"/>
+		<div id="dialog"><p>Find the kitty. Press the arrow keys to look around the house and press the blue squares to check where the kitty is hiding.</p></div>
+</div>
+
+<audio src="music/fridge.mp3" loop id="fridge" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+
+</body>
+</html>

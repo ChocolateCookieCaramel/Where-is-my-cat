@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+    //fades in the entire stage
+	setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+	//editing characters
+	$('img#hunter').width(200).height(250).css({left:100, top:150});
+	$('img#cat').width(100).height(100).css({left:300});
+	$('img#cat').css({ transform: 'scaleX(-1)' });
+
+
+
+	
+	
+	
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#fridge').get(0).play();//plays audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+}) 
+
+		var choice = localStorage.getItem('user_choice');
+
+
+
+		$('div#dialog').html('<p><b>Narrator:</b> You chose the ' +choice+ '. Your cat is angry, hungry now and won\'t like you. -_-</p>');
+
+		setTimeout(function() {
+					$('div#dialog').html('<p>Cat: Hisssssss</p>');
+					$('#hiss').get(0).play();
+					     },6000);
+					
+		setTimeout(function() {
+					window.location="fail2.html";
+					storeSound();
+					      },8000);
+					
+					
+				$('#stage5').append('<img id="'+choice+'"src="images/'+choice+'.png"/>');
+					$('#'+choice).animate({top:350, left:300});
+
+		
+
+})
+</script>
+</head>
+<body>
+
+<div id="stage5">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/cat.png" id="cat"/>
+		<div id="dialog"></div>
+</div>
+
+<audio loop src="music/fridge.mp3" id="fridge" class="bg_music"></audio>
+<audio src="music/cathiss.mp3" id="hiss" class="bg_music"></audio>
+
+</body>
+</html>

@@ -1,0 +1,932 @@
+body{
+	background-color:#000;
+}
+::selection { /*to stop the player from highlighting the game*/
+    color: none;
+    background: none;
+}
+
+div#stage{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/startpage.jpg');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+div#fighttext{
+	position:absolute;
+	top:0;
+	left:380px;
+	color:red;
+	font-weight:bold;
+	font-size:50px;
+	font-family:courier,arial,helvetica;
+}
+
+
+button.fightin{
+	background-color:red;
+	position:absolute;
+	font-family:courier,arial,helvetica;
+	color:#000000;
+	width:100px;
+	transition: all .5s ease-in-out;
+	cursor: pointer;
+}
+
+button.fightin:hover{
+	font-weight:bold;
+	background-color:orange;
+	border:solid 2px red;
+	box-shadow: 0 0 10px orange;
+}
+button#punch{
+	top:500px;
+	left:300px;	
+}
+button#kick{
+	top:500px;
+	left:500px;		
+}
+
+/*teacherhp is for all the enemies since there is no need to make a new div*/
+
+div#teacherhp{
+	background-color:red;
+	width:100px;
+	height:20px;
+	top:50px;
+	position:absolute;
+	right:50px;
+	 z-index: 2;
+}
+
+div#teacherhpu{ 
+	background-color:yellow;
+	width:100px;
+	height:20px;
+	top:50px;
+	position:absolute;
+	right:50px;
+	 z-index: 1;
+}
+
+/* HP for the main character*/
+div#hunterhp{
+	background-color:red;
+	width:100px;
+	height:20px;
+	top:50px;
+	position:absolute;
+	left:50px;
+	 z-index: 2;
+}
+
+div#hunterhpu{
+	background-color:yellow;
+	width:100px;
+	height:20px;
+	top:50px;
+	position:absolute;
+	left:50px;
+	 z-index: 1;
+}
+
+img#teacher1{
+	position:absolute;
+	top:160px;
+	left:500px;
+	width:250px;
+	height:200px;
+}
+
+img#teacher5{
+	position:absolute;
+	top:160px;
+	left:500px;
+	width:250px;
+	height:200px;
+}
+img#teacher2{
+	position:absolute;
+	top:160px;
+	left:-500px;
+	width:250px;
+	height:200px;
+}
+img#teacher3{
+	position:absolute;
+	top:160px;
+	left:-500px;
+	width:250px;
+	height:200px;
+}
+
+img#hunter1t{
+	position:absolute;
+	top:170px;
+	top:170px;
+	left:400px;
+	width:170px;
+	height:200px;
+}
+img#hunter{
+	position:absolute;
+	top:250px;
+	left:100px;
+	width:170px;
+	height:200px;
+}
+img#hunter2{
+	position:absolute;
+	top:250px;
+	left:100px;
+	width:270px;
+	height:200px;
+}
+
+img#hunter11{
+	position:absolute;
+	top:190px;
+	left:400px;
+	width:170px;
+	height:200px;
+}
+
+img#hunter1{
+	position:absolute;
+	top:280px;
+	left:-500px;
+	width:250px;
+	height:170px;
+	z-index:1;
+}
+
+img#rachael{
+	position:absolute;
+	top:250px;
+	left:300px;
+	width:250px;
+}
+
+img#rachael1{
+	position:absolute;
+	top:310px;
+	left:300px;
+	width:120px;
+}
+
+img#rachael2{
+	position:absolute;
+	top:250px;
+	left:300px;
+	width:250px;
+}
+
+img#ben{
+	position:absolute;
+	top:200px;
+	left:300px;
+	left:300px;
+	width:250px;
+}
+
+img#ben1{
+	position:absolute;
+	top:200px;
+	left:300px;
+	left:300px;
+	width:250px;
+}
+
+img#ben2{
+	position:absolute;
+	top:200px;
+	left:300px;
+	left:300px;
+	width:250px;
+}
+
+img#alexa{
+	position:absolute;
+	top:280px;
+	left:300px;
+}
+img#alexa1{
+	position:absolute;
+	top:250px;
+	left:380px;
+}
+
+img#alexa2{
+	position:absolute;
+	top:280px;
+	left:280px;
+}
+img#character1{
+	position:absolute;
+	top:250px;
+	left:300px;
+	width:200px;
+	height:200px;
+}
+
+img#character11{
+	position:absolute;
+	top:250px;
+	left:-500px;
+	width:200px;
+	height:200px;
+}
+
+img#character12{
+	position:absolute;
+	top:250px;
+	left:-500px;
+	width:200px;
+	height:200px;
+}
+
+img#hunter4{
+	position:absolute;
+	top:250px;
+	left:-500px;
+	width:200px;
+	height:200px;
+}
+img#hunter5{
+	position:absolute;
+	top:250px;
+	left:-500px;
+	width:200px;
+	height:200px;
+}
+img#hunter6{
+	position:absolute;
+	top:250px;
+	left:-500px;
+	width:220px;
+	height:200px;
+}
+
+img#hunter7{
+	position:absolute;
+	top:250px;
+	left:-500px;
+	width:220px;
+	height:200px;
+}
+
+img#cat{
+	position:absolute;
+	top:320px;
+	left:700px;
+	width:140px;
+	height:170px;
+}
+
+div#title{
+	position:absolute;
+	top:10px;
+	left:190px;
+	font-family:courier,arial,helvetica;
+	color:#152238;
+	font-weight:bold;
+	background-color:rgba(255,255,255, 0.4);
+    font-size:50px;
+	cursor:context-menu;
+}
+
+button#start{
+	position:absolute;
+	bottom:30px;
+	left:400px;
+	font-size:20px;
+	color:#152238;
+	background-color:white;
+	font-family:courier,arial,helvetica;
+	transition: all .5s ease-in-out;
+	cursor: pointer;
+}
+button#start:hover{
+	background-color:#152238;
+	color:#ffffff;
+    box-shadow: 0 0 10px #000;
+}
+img#treetown{ /*I added a duplicate of the tree, so when Hunter walks up to the business man/school girl, it won't look like Hunter is flying. The tree will be above him*/
+	position:absolute;
+	z-index:2;
+	left:266px;
+}
+div#stage1{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/schoolyard.png');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#stage2{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/house1.png');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#stage3{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/livingroom.png');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#stage4{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/bedroom1.jpg');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#stage5{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/kitchen2.png');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#stage6{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/bathroom2.png');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+
+div#stage8{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/school2.png');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+
+
+
+
+img#huntermaze{
+	position:absolute;
+	bottom:100px;
+	left:115px;
+	width:40px;
+	height:40px;
+}
+
+/*maze section*/
+#mazetext{
+	color:#000000;
+	font-family:courier,arial,helvetica;
+	text-align:center;
+}
+
+div#exit{
+	position:absolute;
+	background-color:#00FA9A;
+	bottom:100px;
+	right:40px;
+	width:58px;
+	height:15px;
+}
+
+/*-------*/
+
+/*puzzle section*/
+div#stage9{
+	position:relative;
+	width:900px;
+	background-color:#000;
+	height:550px;
+	margin:auto;
+	overflow:hidden;
+}
+
+#puzzleItemsContainer {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	list-style-type: none;
+	padding: 0;
+	margin-left:70px;
+	
+}
+.puzzleItems {
+	width: 120px;
+	height: 270px;
+	padding: 0;
+
+}
+.draggedItem {
+	z-index: 999;
+	cursor: move;
+}
+
+/*-----*/
+
+div#stage10{
+	position:relative;
+	background-image:url('images/sleep.png');
+	background-repeat:no-repeat;
+	background-size:600px 450px;
+	background-position:150px 20px;
+	width:900px;
+	height:550px;
+	margin:auto;
+	overflow:hidden;
+}
+div#stage11{
+	position:relative;
+	background-image:url('images/town.jpg');
+	background-repeat:no-repeat;
+	width:900px;
+	height:550px;
+	margin:auto;
+	overflow:hidden;
+}
+div#stage12{
+	position:relative;
+	background-image:url('images/town2.jpg');
+	background-repeat:no-repeat;
+	width:900px;
+	height:550px;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#stage16{
+	position:relative;
+	background-image:url('images/town2-after.jpg');
+	background-repeat:no-repeat;
+	width:900px;
+	height:550px;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#stage13{
+	position:relative;
+	background-image:url('images/enemyhouse.jpg');
+	background-repeat:no-repeat;
+	width:900px;
+	height:550px;
+	margin:auto;
+	overflow:hidden;
+}
+
+
+div#stage14{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('images/kitchenenemy3.jpg');
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+
+div#stage15{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-repeat:no-repeat;
+	margin:auto;
+	overflow:hidden;
+}
+
+div#endtext{
+	margin-top:20px;
+	font-family:courier,arial,helvetica;
+	color:#ffffff;
+	font-size:50px;
+	
+}
+
+img#carbet{
+	position:absolute;
+	top:370px;
+	left:660px;
+	width:135px;
+}
+
+img#key{
+	position:absolute;
+	z-index:2;
+	right:-1500px;
+	
+}
+img#keyhole1{
+	position:absolute;
+	top:260px;
+	left:750px;
+	width:15px;
+}
+
+img#catsleep{
+	position:absolute;
+	width:100px;
+	height:100px;
+	left:350px;
+	top:200px;
+}
+
+div#fail{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('');
+	background-color:#fefefe;
+	background-repeat:no-repeat;
+	font-family:courier,arial,helvetica;
+	text-align:center;
+	font-size:100px;
+	margin:auto;
+	overflow:hidden;
+}
+
+/*button Fail OR Pass*/ 
+
+button.fORp{ 
+	position:absolute;
+	bottom:50px;
+	left:400px;
+	font-size:20px;
+	color:#152238;
+	background-color:white;
+	font-family:courier,arial,helvetica;
+	transition: all .5s ease-in-out;
+}
+button.fORp:hover{
+	background-color:#152238;
+	color:#ffffff;
+    box-shadow: 0 0 10px #000;
+	cursor: pointer;
+}
+
+/*button for the answers*/ 
+button.answers{
+	position:absolute;
+	color:#152238;
+	background-color:white;
+	font-family:courier,arial,helvetica;
+	cursor: pointer;
+	transition: all .5s ease-in-out;
+}
+
+button.answers:hover{
+	background-color:#152238;
+	color:#ffffff;
+    box-shadow: 0 0 10px #000;
+}
+
+button.answers{
+	top:500px;
+}
+button#a1{
+	left:200px;
+}
+button#a2{
+	left:400px;
+}
+
+button#a3{
+	left:300px;
+}
+button#a4{
+	left:450px;
+}
+button#a5{
+	left:100px;
+}
+
+button#a6{
+	left:500px;
+}
+
+/* for the pass page*/
+div#pass{
+	position:relative;
+	width:900px;
+	height:550px;
+	background-image:url('');
+	background-color:#fefefe;
+	background-repeat:no-repeat;
+	font-family:courier,arial,helvetica;
+	text-align:center;
+	font-size:100px;
+	margin:auto;
+	overflow:hidden;
+}
+
+
+div#dialog{
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	text-align:center;
+	font-weight:bold;
+	font-size:20px;
+	width:900px;
+	height:100px;
+	color:black;
+	font-family:courier,arial,helvetica;
+	background-color:rgba(255, 255, 255, 0.8) ;
+	cursor: pointer;
+}
+
+p { 
+  margin-top: 33px; 
+  margin-left: 10px; 
+} 
+
+p#inv{
+	 font-family:courier,arial,helvetica;
+	 font-weight:bold;
+}
+#bar-outer {
+	width: 500px;
+	height: 10px;
+	border: 1px solid black;
+	position: relative;
+}
+#bar-inner {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 500px;
+	height: 10px;
+	background-color: white;
+}
+
+img#arrowt{
+	position:absolute;
+	width:40px;
+	height:40px;
+	left:430px;
+	cursor: pointer;
+}
+
+img#arrowd{
+	position:absolute;
+	width:40px;
+	height:40px;
+	left:430px;
+	bottom:100px;
+	cursor: pointer;
+}
+
+img#arrowl{
+	position:absolute;
+	width:40px;
+	height:40px;
+	left:0px;
+	top:200px;
+	cursor: pointer;
+}
+
+img#arrowr{
+	position:absolute;
+	width:40px;
+	height:40px;
+	right:0px;
+	top:200px;
+	cursor: pointer;
+}
+
+img#happy{
+	position:absolute;
+	width:400px;
+	height:400px;
+}
+
+div.square{
+	position:absolute;
+	width:20px;
+	height:20px;
+	background-color:blue;
+	cursor: pointer;
+}
+
+div#square1{
+	top:350px;
+	left:120px;
+}
+
+div#square2{
+	top:330px;
+	left:600px;
+}
+
+div#square3{
+	top:350px;
+	right:40px;
+}
+
+div#square4{
+	top:350px;
+	left:140px;
+}
+
+div#square5{
+	top:400px;
+	left:110px;
+}
+
+div#square6{
+	top:400px;
+	left:160px;
+}
+
+div#square7{
+	top:380px;
+	left:230px;
+}
+
+div#square8{
+	top:390px;
+	right:280px;
+}
+
+div#square9{
+	top:340px;
+	right:150px;
+}
+
+div#square10{
+	top:200px;
+	left:150px;
+}
+div#square11{
+	top:300px;
+	left:310px;
+}
+div#square12{
+	top:300px;
+	left:460px;
+}
+div#square13{
+	top:300px;
+	left:610px;
+}
+div#square14{
+	top:300px;
+	left:740px;
+}
+
+div#square15{
+	top:70px;
+	left:135px;
+}
+div#square16{
+	top:90px;
+	left:450px;
+}
+
+div#square17{
+	top:90px;
+	left:520px;
+}
+div#square18{
+	top:350px;
+	left:580px;
+}
+
+div#square19{
+	top:340px;
+	left:160px;
+}
+
+/*squares for the town*/
+div#square20{
+	top:250px;
+	left:580px;
+	
+}
+
+div#square21{
+	top:250px;
+	left:860px;
+	
+}
+
+div#square22{
+	top:250px;
+	left:193px;
+	
+}
+
+div#square23{
+	top:170px;
+	left:755px;
+	
+}
+
+div#square24{
+	top:290px;
+	left:860px;
+	
+}
+img#bottle{
+	position:absolute;
+	top:183px;
+	left:260px;
+	z-index:1;
+}
+
+img#coke{
+	position:absolute;
+	top:193px;
+	left:280px;
+}
+
+img#milk{
+	position:absolute;
+	top:170px;
+	left:305px;
+}
+img#can{
+	position:absolute;
+	top:190px;
+	left:350px;
+	z-index:1;
+}
+img#bubbletea{
+	position:absolute;
+	top:194px;
+	left:380px;
+	width:20px;
+	height:35px;
+}
+
+img#lettermini {
+	position: absolute;
+	top:290px;
+	left: 860px;
+}
+
+#inventory { /*position it*/
+	position: relative;
+	bottom: 0;
+	left: 7px;
+	width: 110px;
+	height: 110px;
+	margin: 5px auto;
+	background-color:#a1a9a8;
+}
+
+.clickable { /*the mouse cursor*/
+	cursor: pointer;
+}
+#inventory .items { /*squares*/
+	width: 28px;
+	height:33px;
+	margin-left: 41px;
+	border: 1px solid #000;
+}
+#inventory .items img { /*this will make it not show in the squares unless clicked*/
+	display: none;
+}
+
+img#vOn{
+	position:absolute;
+	width:50px;
+	left:0;
+	top:10px;
+}
+
+img#vOff{
+	position:absolute;
+	left:0;
+}
+
+

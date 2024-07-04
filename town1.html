@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+
+	setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+	
+		
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#town').get(0).play(); //audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+		$('div#square21').hide();
+		
+
+		//left arrow	
+$('img#arrowl').click(function(){
+
+	setTimeout(function() {
+					window.location="town2.html";
+					 storeSound(); 	
+					},1000); 
+		$('img#hunter').css({transform:'scalex(-1'});
+    })
+	.mouseover(function(){
+      $('#click').get(0).play();
+     });  
+	
+	$('div#square20').click(events_handler);
+		var events_counter = 0;
+			function events_handler() {
+				events_counter++;
+        
+		
+
+		if (events_counter==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Hey, sorry to disturb you but have you seen my cat?</p>');
+
+		$('img#hunter').animate({left:350, top:200},{duration:2000});
+		
+		setTimeout(function() {
+					$('div#dialog').html('<p>School Girl: What colour was he?</p>');
+					     },2000);
+			setTimeout(function() {
+					$('div#dialog').html('<p>Hunter: Light and dark grey.</p>');
+					     },5000); 
+			setTimeout(function() {
+					$('div#dialog').html('<p>School Girl: No sorry.. I haven\'t seen your cat.</p>');
+					$('div#square21').fadeIn();
+					     },7000); 
+		}
+		
+		else{
+		$('div#dialog').html('<p>School Girl: I literally told you I haven\'t see your cat!!! are you trying to flirt with me or something??</p>');
+		}
+		
+  }
+
+
+$('div#square21').click(events_handler1);
+	var events_counter1 = 0;
+		function events_handler1() {
+			events_counter1++;
+        
+		
+
+		if (events_counter1==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Hey, sorry to disturb you but have you seen my cat?</p>');
+		$('img#hunter').animate({left:700, top:200},{duration:2000});
+		
+		setTimeout(function() {
+					$('div#dialog').html('<p>College student: NO!!!</p>');
+					     },2000);
+			setTimeout(function() {
+					$('div#dialog').html('<p>Hunter: Woah there.. I\'m only asking... you\'re hella rude!</p>');
+					     },5000); 
+			setTimeout(function() {
+					$('div#dialog').html('<p>College student: Leave me alone bro.</p>');
+					     },8000);
+		}
+		
+		else{
+		$('div#dialog').html('<p>College student: Bugger off mate!! or I\'ll call the cops bro!!!</p>');
+		}
+		
+	}
+	
+	 
+})
+</script>
+</head>
+<body>
+
+<div id="stage11">
+	<img src="" id="vOn"/>
+	<img src="images/arrowl.png" id="arrowl"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+		<div id="dialog"><p>Click the blue squares to see if you can find clues around the neighbourhood. </p></div>
+		<div id="square20" class="square"></div>
+		<div id="square21" class="square"></div>
+</div>
+
+<audio loop src="music/town.mp3" id="town" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click"	class="bg_music"></audio>
+
+</body>
+</html>

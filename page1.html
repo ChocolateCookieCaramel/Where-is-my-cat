@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+
+$('.output').text(localStorage.getItem('demo_storage'));
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+
+	var isPlaying = localStorage.getItem('soundState');
+	$('#music').get(0).play();
+
+	if(isPlaying=='true') {
+
+	$('img#vOn').attr('src','images/volumeon.png');
+	$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+				$('.bg_music').each(function() {
+			$(this).get(0).muted = true;
+		})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+$('div#dialog').click(events_handler);
+    var events_counter = 0;
+		function events_handler() {
+			events_counter++;
+        
+		
+
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>Hunter:</b> You challenge me??? I\'m going to kick your ass!!</p>');
+		$('img#hunter').animate({left:200},{duration:200});
+	}
+		
+	if (events_counter==2){
+		$('div#dialog').html('<p><b>Random school student:</b> Oh! We will see about that tough guy!</p>');
+		$('img#character1').animate({left:250},{duration:200});
+	}
+		
+	if (events_counter==3){
+		$('img#hunter1').css({left:200});
+		$('img#hunter').hide();
+		$('#music').get(0).pause();
+		$('#punch').get(0).play();
+		$('#fightingmusic').prop("volume", 0.3);
+        $('#fightingmusic').get(0).play();
+	}
+		
+	if (events_counter==4){
+		$('img#character11').css({left:300});
+		$('img#character1').hide();
+	}
+		
+	if (events_counter==5){
+		$('img#hunter4').css({left:200});
+		$('img#hunter1').hide();
+		$('#kick').get(0).play();
+	}
+		
+	if (events_counter==6){
+		$('div#dialog').html('<p>Hunter: Heh told you so.</p>');
+		$('img#hunter5').css({left:200});
+		$('img#hunter4').hide();
+		$('#ow').get(0).play();
+		$('img#character12').animate({left:340},{duration:20});
+		$('img#character11').hide();
+	}
+		
+	if (events_counter==7){
+		$('div#dialog').html('<p><b>Random school student:</b> Ahhhh!!!</p>');
+		$('img#character12').animate({left:5000},{duration:1020});
+	}
+		
+	if (events_counter==8){
+		$('div#dialog').html('<p><b>Narrator:</b> *sigh* And here we have our main character. As we can see, he likes to beat people up. -_-</p>');
+		$('img#hunter6').animate({left:200},{duration:0});
+		$('img#hunter5').hide()
+	}
+		
+	if (events_counter==9){
+		storeSound();
+		window.location="page2.html";
+	}
+		
+ }
+
+})
+</script>
+</head>
+<body>
+
+<div id="stage1">
+	<img src="" id="vOn"/>
+	
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/character1.png" id="character1"/>
+	<img src="images/maincharacter1.png" id="hunter1"/>
+	<img src="images/character11.png" id="character11"/>
+	<img src="images/character12.png" id="character12"/>
+	<img src="images/maincharacter4.png" id="hunter4"/>
+	<img src="images/maincharacter5.png" id="hunter5"/>
+	<img src="images/maincharacter6.png" id="hunter6"/>
+		<div id="dialog"><p><b>Narrator:</b> Hello <b class="output"></b> it is such a peaceful day~ </p></div>
+</div>
+
+<audio src="music/ow.mp3" id="ow" class="bg_music"></audio>
+<audio src="music/kick.mp3" id="kick" class="bg_music"></audio>
+<audio src="music/punch.mp3" id="punch" class="bg_music"></audio>
+<audio loop src="music/music.mp3" id="music" class="bg_music"></audio>
+<audio src="music/fightingmusic.mp3" id="fightingmusic" class="bg_music"></audio>
+
+</body>
+</html>

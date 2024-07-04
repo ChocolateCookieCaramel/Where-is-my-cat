@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<script src="jquery-3.6.0.min.js"></script>
+<script src="hittest.js"></script>
+<link href="styles.css" rel="stylesheet" />
+<script>
+$(document).ready(function() { 
+
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#park').get(0).play();//background audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+	
+
+	var collisionTimer;
+	var going;
+	var animation;
+	var movement = {
+		37: {left: '-=1'},
+		38: {top: '-=1'},
+		39: {left: '+=1'},
+		40: {top: '+=1'}
+	}
+
+	$(document).one('keydown', keyDown);
+
+	function keyDown(event) {
+		$(document).one('keyup', keyup);
+		if(event.keyCode==37||event.keyCode==38||event.keyCode==39||event.keyCode==40){
+			animation = movement[event.keyCode];
+			if(event.keyCode==37) {
+				$('#huntermaze').css({ transform: 'scaleX(-1)' })
+			}
+			if(event.keyCode==39) {
+				$('#huntermaze').css({ transform: 'scaleX(1)' })
+			}
+			going = setInterval(keepGoing, 1);
+		}
+	}
+	function keepGoing() {
+		$('#huntermaze').css(animation);
+	}
+
+	function keyup(event) {
+		clearInterval(going);
+		$(document).one('keydown', keyDown);
+	}
+
+	function resetPlayer() {
+		$('#huntermaze').css({
+			top: 400,
+			left: 115,
+			transform: 'scaleX(1)'
+		}).fadeIn(1000, function() {
+			collisionTimer = setInterval(checkCollision,50);
+		});
+	}
+
+	function checkCollision() {
+		var hit = $('#huntermaze').objectHitTest({"object":$('#maze'), "transparency":true});
+		if(hit==true) {
+		$('#failmaze').get(0).play();
+			clearInterval(collisionTimer);
+			$('#huntermaze').hide();
+			setTimeout(function() {
+				resetPlayer();
+			},1500)
+		}
+		var exit_hit = $('#huntermaze').objectHitTest({"object":$('#exit'), "transparency":true});
+		if(exit_hit==true) {
+			clearInterval(collisionTimer);
+			setTimeout(function() { window.location='enemy2.html'   },0.5);
+			storeSound();
+		}
+	}
+
+	resetPlayer();
+	
+})
+</script>
+</head>
+<body>
+
+<div id="stage9">
+	<img src="" id="vOn"/>
+	<img src="images/maze.png" id="maze"/>
+	<img src="images/MainCharacter.png" id="huntermaze"/>
+		<div id="exit"><div id="mazetext">exit</div></div>
+		<div id="dialog"><p>Use the arrow keys to move</p></div>
+</div>
+
+<audio src="music/failmaze.mp3" id="failmaze" class="bg_music"></audio>
+<audio loop src="music/park.mp3" id="park" class="bg_music"></audio>
+
+</body>
+</html>

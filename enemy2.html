@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+	
+ 
+ function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#park').get(0).play();//background sound
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+	$('img#hunter').css({left:-40}).animate({left:150},{duration:2000});
+
+
+	$('img#rachael').css({transform:'scalex(-1'});
+
+	
+	$('button.answers').hide();
+
+//answer 5
+$('button#a5').click(function(){
+
+					window.location="a5.html";
+					storeSound();  
+    })
+	.mouseover(function(){
+      $('#click').get(0).play();
+     });
+	 
+//answer 6
+	 $("button#a6").click(function(){
+
+					window.location="a6.html";
+					storeSound();  
+    })
+	.mouseover(function(){
+      $('#click').get(0).play();
+     });
+
+	
+$('div#dialog').click(events_handler);
+    var events_counter = 0;
+		function events_handler() {
+			events_counter++;
+        
+		
+
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>Hunter:</b> So Rachael where\'s the cat?</p>');
+
+	}
+		
+	if (events_counter==2){
+		$('div#dialog').html('<p><b>Rachael:</b> I don\'t know what you\'re talking about~</p>');
+
+	}
+	if (events_counter==3){
+		$('div#dialog').html('<p><b>Hunter:</b> Yeah sure you don\'t.. stop playing games.</p>');
+
+	}
+	if (events_counter==4){
+		$('div#dialog').html('<p><b>Hunter:</b> It\'s getting real annoying now..</p>');
+
+	}
+	if (events_counter==5){
+		$('div#dialog').html('<p><b>Rachael:</b> Well then let\'s cut to the chase.. I won\'t give you your cat back.</p>');
+
+	}
+	if (events_counter==6){
+		$('div#dialog').html('<p><b>Hunter:</b> Oh yes you will..</p>');
+
+	}
+	if (events_counter==7){
+		$('div#dialog').html('<p><b>Rachael:</b> Really now? </p>');
+
+	}
+	if (events_counter==8){
+		$('div#dialog').html('<p><b>Hunter:</b> Yeah.. I\'m going to get my cat back today whether you like it or not.</p>');
+
+	}
+		
+	if (events_counter==9){
+		$('div#dialog').html('<p><b>Rachael:</b> Ha! Then you got to fight me!</p>');
+	}
+		
+		
+	if (events_counter==10){
+		$('div#dialog').html('');
+		$('button.answers').show();
+
+	}
+		
+}
+
+
+
+
+});
+	
+
+</script>
+</head>
+<body>
+
+<div id="stage">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/rachael.png" id="rachael"/>
+		<div id="dialog"><p><b>Hunter:</b> -_- </p></div>
+		<button id="a5" class="answers">Nah, I only fight people my own size.</button>  
+		<button id="a6" class="answers">Fine if thats how it is to get my cat back!</button>
+</div>
+
+<audio loop src="music/park.mp3" id="park" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+
+</body>
+</html>

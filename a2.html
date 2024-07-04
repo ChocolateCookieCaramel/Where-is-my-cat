@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 1);
+
+
+	
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#classroom').get(0).play();//plays audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+	
+	
+	$('img#hunter').css({left:420, top:150});
+	$('img#teacher1').css({left:480});
+
+
+
+	$('div#dialog').click(events_handler);
+		var events_counter = 0;
+			function events_handler() {
+				events_counter++;
+        
+		
+		
+		if (events_counter==1){
+		$('div#dialog').html('<p><b>Teacher:</b> Excuse me?</p>');
+		
+		}
+		
+		if (events_counter==2){
+		$('div#dialog').html('<p><b>Teacher:</b> That\'s not a good enough excuse to come late to my class.</p>');
+		
+		}
+		
+		if (events_counter==3){
+		$('div#dialog').html('<p><b>Hunter:</b> Yes it is.. I\'m worried something bad is happening to her!!!</p>');
+		
+		}
+		
+		if (events_counter==4){
+		$('div#dialog').html('<p><b>Teacher:</b> Nah, detention this afternoon.</p>');
+		
+		}
+		
+		if (events_counter==5){
+		$('div#dialog').html('<p><b>Hunter:</b> No, I\'m not going to your stupid detention because that won\'t teach me to not care about my pet.</p>');
+		
+		}
+		
+		if (events_counter==6){
+		$('div#dialog').html('<p><b>Teacher:</b> Listen here you dumb kid!!! You\'re going to detention if you like it or not..</p>');
+		
+		}
+		
+		if (events_counter==7){
+		$('div#dialog').html('<p><b>Hunter:</b> Yeah-nuh.. make me you old hag!!! </p>');
+		storeSound();
+		setTimeout(function() {
+					window.location="school.html";
+					     },2000);
+		}
+	
+	}
+
+})
+</script>
+</head>
+<body>
+
+<div id="stage8">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/teacher1.png" id="teacher1"/>
+		<div id="dialog"><p><b>Hunter:</b> I was looking for my cat around the neighbourhood.</p></div>
+</div>
+<audio loop src="music/classroom.mp3" id="classroom" class="bg_music"></audio>
+
+</body>
+</html>

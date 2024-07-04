@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+
+function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#night').get(0).play();//audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+$('div#dialog').click(events_handler);
+   var events_counter = 0;
+   function events_handler() {
+		events_counter++;
+        
+		
+
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>Narrator:</b> However, one night when Hunter and the kitty were sleeping.</p>');
+		}
+		
+	if (events_counter==2){
+		$('div#dialog').html('<p><b>Narrator:</b> The kitty vanished!!</p>');
+		$('img#catsleep').fadeOut();
+		$('#tumble').get(0).play();
+		}
+	
+	if (events_counter==3){
+		$('div#dialog').html('<p><b>Narrator:</b> Only Hunter realized this once he had woken up.</p>');
+		}
+		
+	if (events_counter==4){
+		$('div#dialog').html('<p><b>Narrator:</b> But it was too late. The window was wide opened and the cat is nowhere in the house.</p>');
+		}
+		
+	if (events_counter==5){
+		  window.location = 'town1.html';
+		  storeSound(); 
+		}
+		
+	}
+
+})
+</script>
+</head>
+<body>
+
+<div id="stage10">
+	<img src="" id="vOn"/>
+	<img src="images/catsleep.png" id="catsleep"/>
+		<div id="dialog"><p><b>Narrator:</b> A few months had passed. Hunter and the cat were inseparable. :) </p></div>
+</div>
+
+<audio src="music/night.mp3" id="night" class="bg_music"></audio>
+<audio src="music/tumbleweed.mp3" id="tumble" class="bg_music"></audio>
+
+</body>
+</html>

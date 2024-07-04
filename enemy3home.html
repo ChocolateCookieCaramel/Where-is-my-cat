@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+	$('img#hunter7').animate({left:630},{duration:2000});
+	$('img#hunter7').css('zIndex', '2');
+	$('img#hunter').hide();
+	
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#park').get(0).play();//background sound
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+$('div#dialog').click(events_handler);
+    var events_counter = 0;
+		function events_handler() {
+			events_counter++;
+        
+		
+
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>Hunter:</b> This is Ben\'s house.</p>');
+	}
+		
+	if (events_counter==2){
+		$('#ring').get(0).play();
+	}
+		
+	if (events_counter==3){
+		$('div#dialog').html('<p><b>Hunter:</b> Oi Ben open up!!</p>');
+	}
+		
+	if (events_counter==4){
+		$('#ring').get(0).play();
+	}
+		
+	if (events_counter==5){
+		$('div#dialog').html('<p><b>Hunter:</b> He isn\'t answering..</p>');
+	}
+		
+	if (events_counter==6){
+		$('#knock').get(0).play()
+		$('div#dialog').html('<p><b>Hunter:</b> I know you\'re in there Ben!</p>');
+	}
+		
+	if (events_counter==7){
+		$('#knock2').get(0).play();
+	}
+		
+	if (events_counter==8){
+		$('#ring').get(0).play();
+	}
+		
+	if (events_counter==9){
+		$('#knock').get(0).play();
+	}
+		
+	if (events_counter==10){
+		storeSound(); 
+		$('img#hunter7').hide();
+		$('img#hunter').show();
+		$('img#hunter').css({left:630});
+		$('img#hunter').animate({left:520},{duration:2000});
+		$('div#dialog').html('<p><b>Hunter:</b> Maybe Ben has a spare key around..</p>');
+	setTimeout(function(){ window.location="enemy3home2.html"; }, 3000);
+	}
+		
+  }
+
+	
+	
+
+
+});
+	
+
+</script>
+</head>
+<body>
+
+<div id="stage13">
+	<img src="" id="vOn"/>
+	<img src="images/maincharacter7.png" id="hunter7"/>
+	<img src="images/carbet.png" id="carbet"/>
+		<div id="dialog"><p><b>Hunter:</b> -_- </p></div>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/key.png" id="key"/>
+	<img src="images/keyhole1.png" id="keyhole1"/>
+</div>
+
+<audio src="music/doorbell.mp3" id="ring" class="bg_music"></audio>
+<audio src="music/doorknock.mp3" id="knock" class="bg_music"></audio>
+<audio src="music/doorknock2.mp3" id="knock2" class="bg_music"></audio>
+<audio loop src="music/park.mp3" id="park" class="bg_music"></audio>
+
+</body>
+</html>

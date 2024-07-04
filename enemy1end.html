@@ -1,0 +1,109 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+
+
+	$('img#hunter').css({left:270,  top:255});//editing characters
+	$('img#alexa').css({left:400});
+	$('img#alexa').css({transform:'scalex(-1'});
+	$('#cry').get(0).play();//sound affect
+	
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#playground').get(0).play();//background sound
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+$('div#dialog').click(events_handler);
+    var events_counter = 0;
+		function events_handler() {
+			events_counter++;
+        
+		
+
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>Hunter:</b> -_- So where\'s the cat??</p>');
+
+	}
+		
+	if (events_counter==2){
+		$('div#dialog').html('<p><b>Alexa:</b> I don\'t know.. maybe Rachael knows..</p>');
+	}
+		
+	if (events_counter==3){
+		$('div#dialog').html('<p><b>Hunter:</b> Oi! stop playing with me.. where\'s the cat?</p>');
+
+	}
+		
+		
+	if (events_counter==4){
+		$('div#dialog').html('<p><b>Alexa:</b> I\'m not... I think Rachael is at the park.. </p>');
+
+		}
+		
+	if (events_counter==5){
+		$('div#dialog').html('<p><b>Hunter:</b> -_- okay..</p>');
+		 storeSound();  
+ 
+	setTimeout(function(){ window.location="maze.html"; }, 2000);
+
+	}
+		
+   }
+});
+	
+
+</script>
+</head>
+<body>
+
+<div id="stage1">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/alexa.png" id="alexa"/>
+		<div id="dialog"><p><b>Alexa</b>: *cries*</p></div>
+</div>
+
+<audio src="music/cry.mp3" id="cry" class="bg_music"></audio>
+<audio loop src="music/playground.mp3" id="playground" class="bg_music"></audio>
+
+</body>
+</html>

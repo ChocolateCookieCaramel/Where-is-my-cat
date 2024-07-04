@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+
+ setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+ 
+
+ 
+ 	function storeSound() {
+	localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	 $('#bathroom').get(0).play();
+
+	if(isPlaying=='true') {
+
+	$('img#vOn').attr('src','images/volumeon.png');
+	$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+	})
+	}else {
+	$('img#vOn').attr('src','images/volumeoff.png');
+	$('.bg_music').each(function() {
+			$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+	if(isPlaying) {
+		$(this).attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = true;
+		})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+ 
+ //top arrow 
+      $('img#arrowt').click(function(){
+		window.location="page5.html";
+		storeSound();
+        })
+		
+     .mouseover(function(){
+      $('#click').get(0).play();
+      });
+	  
+//squares
+$('div#square16').click(events_handler16);
+		 
+   var events_counter16 = 0;
+		function events_handler16() {
+		events_counter16++;
+		
+		if (events_counter16==1){
+		$('div#dialog').html('<p><b>Hunter:</b> I got tunaaa</p>');
+	}
+		else{
+		$('div#dialog').html('<p><b>Hunter:</b> Hmm, my house is definitely locked.</p>');
+		}
+	}
+		
+ $('div#square17').click(events_handler17);
+    var events_counter17 = 0;
+		function events_handler17() {
+		events_counter17++;
+		
+		if (events_counter17==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Kitty are you here??</p>');
+		}
+		else{
+		$('div#dialog').html('<p><b>Hunter:</b> Thinking about it.. it would be hard for the cat to get in the cabinet.</p>');
+		}
+	}
+		
+$('div#square18').click(events_handler18);
+				 
+     var events_counter18 = 0;
+		function events_handler18() {
+		events_counter18++;
+		
+		if (events_counter18==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Hmm I wonder where she is.</p>');
+	}
+		else{
+		$('div#dialog').html('<p><b>Hunter:</b> She ain\'t there mate.</p>');
+		}
+	}
+		
+$('div#square19').click(events_handler19);
+	
+	var events_counter19 = 0;
+		function events_handler19() {
+		events_counter19++;
+		
+		if (events_counter19==1){
+		$('div#dialog').html('<p><b>Hunter:</b> She\'s not in the bathtub.</p>');
+	}
+		else{
+		$('div#dialog').html('<p><b>Hunter:</b> Yeah.. it\'s definitely easy to see a cat in the bathtub. -_-</p>');
+		}
+	}
+	  
+	  
+})
+</script>
+</head>
+<body>
+
+<div id="stage6">
+	<img src="" id="vOn"/>
+		<div class="square" id="square16"></div>
+		<div class="square" id="square17"></div>
+		<div class="square" id="square18"></div>
+		<div class="square" id="square19"></div>
+	<img src="images/arrowt.png" id="arrowt"/>
+		<div id="dialog"><p>Find the kitty. Press the arrow keys to look around the house and press the blue squares to check where the kitty is hiding.</p></div>
+</div>
+
+<audio loop src="music/bathroom.mp3" id="bathroom" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#passsound').get(0).play();//background audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+
+ $('button.fORp').click(function(){
+        $('body').fadeOut(2000);
+		window.location="enemy2end.html";
+		storeSound(); 
+    })
+	
+	.mouseover(function(){
+		$('#click').get(0).play();
+	});
+
+})
+</script>
+</head>
+<body>
+
+<div id="pass">
+	<img src="" id="vOn"/>
+	You passed!! :)
+	<img src="images/happy.gif" id="happy"/>
+	<button class="fORp">Play Next Stage</button>
+</div>
+
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+<audio src="music/passsound.mp3" id="passsound" class="bg_music"></audio>
+
+</body>
+</html>

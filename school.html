@@ -1,0 +1,325 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+
+var event_counter = 0;
+var event_counter1 = 0;
+	$('#fightingmusic').prop("volume", 0.3);
+	$('img#hunter').css({left:420, top:150});
+	$('img#teacher1').css({left:460});
+
+function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#fightingmusic').get(0).play();//background audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+	$('.fightin').mouseover(function(){
+		$('#click').get(0).play();
+	});
+
+$('button#punch').click(event_handler);
+	function event_handler() {
+		event_counter++;
+			
+	if (event_counter==1){
+		$('img#hunter').hide();
+		$('img#hunter4').hide();
+		$('img#hunter5').hide();
+	    $('img#hunter1').show();
+		$('img#hunter1').css({left:420, top:150});
+		$('img#teacher1').animate({left:480},{duration:200});
+		$('div#teacherhp').animate({width:"-=3%"} ,{duration:0}
+        ).effect( "shake", {times:2}, 0 );
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		
+		
+    setTimeout(function(){ $('img#teacher1').hide(); 
+        $('img#teacher3').css({left:480});
+		$('img#teacher3').animate({left:435},{duration:200});
+        $('#punchs').get(0).play();
+		$('img#hunter1').css({top:170})
+		$('img#hunter1').animate({left:418},{duration:200});
+		$('div#hunterhp').animate({width:"-=3%"},{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 )
+		$('#ouch').get(0).play()
+				}, 500);
+	}
+
+    if (event_counter==2){
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').animate({left:430, top:150},{duration:200});
+		$('img#teacher3').animate({left:480},{duration:200});
+		$('div#teacherhp').animate({width:"-=3%"},{duration:0}).effect( "shake", {times:2}, 0 );
+		$('#punchs').get(0).play();
+		$('#oww').get(0).play();
+	  
+    setTimeout(function(){
+		$('img#teacher3').animate({left:435},{duration:200});
+        $('#punchs').get(0).play();
+		$('img#hunter1').css({top:170});
+		$('img#hunter1').animate({left:418},{duration:200});
+		$('div#hunterhp').animate({width:"-=3%"},{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 )
+		$('#ouch').get(0).play()
+				}, 500);
+    }	   
+	  
+    if (event_counter==3){
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').animate({left:430, top:150},{duration:200});
+		$('img#teacher3').animate({left:480},{duration:200});
+		$('div#teacherhp').animate({width:"-=3%"},{duration:0}
+		).effect( "shake", {times:2}, 0 );
+		$('#punchs').get(0).play();
+		$('#oww').get(0).play();
+	  
+    setTimeout(function(){
+		$('img#teacher3').animate({left:435},{duration:200});
+        $('#punchs').get(0).play();
+		$('img#hunter1').css({top:170});
+		$('img#hunter1').animate({left:418},{duration:200});
+		$('div#hunterhp').animate({width:"-=3%"},{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 );
+		$('#ouch').get(0).play();
+				}, 500);
+    }	 
+	  
+    if (event_counter==4){
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').animate({left:430, top:150},{duration:200});
+		$('img#teacher3').animate({left:480},{duration:200});
+		$('div#teacherhp').animate({width:"-=3%"},{duration:0}
+		).effect( "shake", {times:2}, 0 );
+		$('#punchs').get(0).play();
+		$('#oww').get(0).play();
+	  
+	setTimeout(function(){
+		$('img#teacher3').animate({left:435},{duration:200});
+        $('#punchs').get(0).play();
+		$('img#hunter1').css({top:170});
+		$('img#hunter1').animate({left:418},{duration:200});
+		$('div#hunterhp').animate({width:"-=3%"},{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 )
+		$('#ouch').get(0).play()
+				}, 500);
+    }
+}
+	function testfordeath() {
+		if( $('div#hunterhp').width() <= 0 && $('div#teacherhp').width() <= 0 ) {
+			setTimeout(function(){	window.location="fail3.html";
+			storeSound(); 	
+			}, 1000);
+		}
+		else if( $('div#teacherhp').width() <= 0 ) {
+			setTimeout(function(){window.location="pass5.html";
+			storeSound(); 	
+			}, 1000);
+		}
+	}	  
+	  
+	  
+$('button#kick').click(event_handler1);
+	function event_handler1() {
+		event_counter1++;
+		
+		
+	if (event_counter1==1){
+	    $('img#hunter1').hide();
+	    $('img#hunter').hide();
+	    $('img#hunter4').show();
+		$('img#hunter4').css({left:420, top:150});
+		$('img#teacher1').animate({left:480},{duration:200});
+		$('div#teacherhp').animate({width:"-=5%"},{duration:0
+        }).effect( "shake", {times:2}, 0 );
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+
+		
+	setTimeout(function(){ $('img#teacher1').hide();
+        $('img#teacher3').css({left:480});
+		$('img#teacher3').animate({left:435},{duration:200});
+        $('#kicks').get(0).play();
+		$('img#hunter4').hide();
+		$('img#hunter5').css({left:418, top:150});
+		$('img#hunter5').show();
+		$('div#hunterhp').animate({width:"-=3%"},{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+		$('#ouch').get(0).play();
+				}, 500);
+}
+	
+    if (event_counter1==2){
+		$('img#hunter1').hide();
+	    $('img#hunter').hide();
+		$('img#hunter1').hide();
+		$('img#hunter4').show();
+		$('img#hunter5').hide();
+		$('img#teacher3').animate({left:480},{duration:200});
+		$('div#teacherhp').animate({width:"-=5%"},{duration:0
+		}).effect( "shake", {times:2}, 0 );
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+
+		
+	setTimeout(function(){ $('img#teacher1').hide();
+        $('img#teacher3').css({left:480});
+		$('img#teacher3').animate({left:435},{duration:200});
+        $('#kicks').get(0).play();
+		$('img#hunter4').hide();
+		$('img#hunter5').show();
+		$('div#hunterhp').animate({width:"-=3%"},{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 )
+		$('#ouch').get(0).play();
+				}, 500);
+}
+	  
+	  
+    	
+    if (event_counter1==3){
+		$('img#hunter1').hide();
+	    $('img#hunter').hide();
+		$('img#hunter1').hide();
+		$('img#hunter4').show();
+		$('img#hunter5').hide();
+		$('img#teacher3').animate({left:480},{duration:200});
+		$('div#teacherhp').animate({width:"-=5%"},{duration:0
+		}).effect( "shake", {times:2}, 0 );
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		
+		
+    setTimeout(function(){ $('img#teacher1').hide();
+        $('img#teacher3').css({left:480});
+		$('img#teacher3').animate({
+		left:435
+		},{
+		duration:200});
+		
+        $('#kicks').get(0).play();
+		$('img#hunter4').hide();
+		$('img#hunter5').show();
+		$('div#hunterhp').animate({width:"-=3%"},{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+		$('#ouch').get(0).play()
+				}, 500);
+ }
+}
+
+// prevents spam
+$('.fightin').click(function(){
+    var button = $(this);
+    button.prop('disabled',true);
+    window.setTimeout(function(){ 
+        button.prop('disabled',false);
+    },1000);
+});
+
+
+
+});
+</script>
+</head>
+<body>
+<div id="stage8">
+	<img src="" id="vOn"/>
+		<div id="fighttext">FIGHT!</div>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/maincharacter4.png" id="hunter4"/>
+	<img src="images/maincharacter3.png" id="hunter1"/>
+	<img src="images/maincharacter5.png" id="hunter5"/>
+	<img src="images/teacher1.png" id="teacher1"/>
+	<img src="images/teacher2.png" id="teacher2"/>
+	<img src="images/teacher3.png" id="teacher3"/>
+		<div id="teacherhp"></div>
+		<div id="teacherhpu"></div>
+		<div id="hunterhp"></div>
+		<div id="hunterhpu"></div>
+		<div id="dialog"></div>
+		<button id="punch" class="fightin">Punch</button>
+		<button id="kick" class="fightin">Kick</button>
+</div>
+
+<audio loop src="music/fightingmusic.mp3" id="fightingmusic" class="bg_music"></audio>
+<audio src="music/punch.mp3" id="punchs" class="bg_music"></audio>
+<audio src="music/ouch.mp3" id="ouch" class="bg_music"></audio>
+<audio src="music/oww.mp3" id="oww" class="bg_music"></audio>
+<audio src="music/kick.mp3" id="kicks" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+
+</body>
+</html>

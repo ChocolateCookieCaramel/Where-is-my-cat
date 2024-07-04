@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet">
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+
+
+$('#clocktick').prop("volume", 0.2);
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#clocktick').get(0).play(); //audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+
+	$('#puzzleItemsContainer').sortable({
+		update: function() {
+			var userPieces = '';
+			$('.puzzleItems').each(function() {
+				userPieces += $(this).attr('data');
+				$('#page').get(0).play();
+
+			})
+			checkResult(userPieces);
+		}
+	});
+	$('#puzzleItemsContainer').disableSelection();
+
+	function checkResult(userPieces) {
+		if(userPieces == '123456') {
+			$('div#dialog').html('<p>Good job for fixing the letter!</p>');
+			 setTimeout(function(){ window.location="pass4.html"; storeSound();  }, 5000); //so the player is able to have enough time to read the letter
+		}
+	}
+	
+
+		
+});
+</script>
+</head>
+
+<body>
+
+<div id="stage9">
+	<img src="" id="vOn"/>
+<div id="dialog"><p>Fix the letter by places each of the pieces correctly</p></div>
+	<div id="puzzleItemsContainer">
+		<img class="puzzleItems" data="6" src="images/6.jpg">
+	    <img class="puzzleItems" data="2" src="images/2.jpg">
+		<img class="puzzleItems" data="4" src="images/4.jpg">
+		<img class="puzzleItems" data="1" src="images/1.jpg">
+		<img class="puzzleItems" data="3" src="images/3.jpg">
+		<img class="puzzleItems" data="5" src="images/5.jpg">
+	</div>
+</div>
+
+<audio src="music/pageflip.mp3" id="page" class="bg_music"></audio>
+<audio loop src="music/clockticking.mp3" id="clocktick" class="bg_music"></audio>
+
+
+</body>
+</html>

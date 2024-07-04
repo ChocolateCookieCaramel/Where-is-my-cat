@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+$('img#hunter').width(200).height(210).css({left:0}); //Editing characters
+$('img#cat').width(100).height(100).css({left:9});
+
+
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#clocktick').get(0).play();
+		$('#door').get(0).play();
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+
+
+
+
+$('#clocktick').prop("volume", 0.2);
+
+
+$('div#dialog').click(events_handler);
+	var events_counter = 0;
+		function events_handler() {
+			events_counter++;
+		
+	if (events_counter==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Here you go little one.</p>');
+	    $('img#cat').width(100).height(100).animate({left:230, top:375},{duration:1000});
+		$('#meow').get(0).play();
+	}
+		
+	if (events_counter==2){
+		$('div#dialog').html('<p><b>Hunter:</b> I\'ll let you rest for a while.</p>');
+	}
+		
+	if (events_counter==3){
+		  $('img#hunter').animate({left:1000},{duration:2000});
+	}
+       
+	if (events_counter==4){
+		  $('div#dialog').html('<p>2 hours later</p>');
+		  $('img#cat').fadeOut(300);
+		  $('#tumble').get(0).play();
+	}
+		
+	if (events_counter==5){
+		
+		$('img#hunter').css({transform:'scalex(-1'});
+		$('img#hunter').width(200).height(210).animate({left:230},{duration:2000});
+		$('div#dialog').html('<p><b>Hunter:</b> Where\'s the kitty???</p>');
+		 $('#tumble').get(0).pause();
+	}
+		
+	if (events_counter==6){
+		$('img#hunter').css({transform:'scalex(1'});
+		$('img#hunter').width(200).height(210).animate({left:200},{duration:400});
+		$('div#dialog').html('<p><b>Hunter:</b> Psh psh kitty come here.</p>');
+	}
+		
+	if (events_counter==7){
+		$('div#dialog').html('<p>Find the kitty. Press the arrow keys to look around the house and press the blue squares to check where the kitty is hiding.</p>');
+		setTimeout(function(){ window.location="page5.html"; }, 2000);
+		storeSound();
+	}
+		
+		
+}
+
+
+})
+</script>
+</head>
+<body>
+
+<div id="stage3">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/cat.png" id="cat"/>
+		<div id="dialog"><p>Congrats for passing the first stage :) </p></div>
+</div>
+
+<audio loop src="music/clockticking.mp3" id="clocktick" class="bg_music"></audio>
+<audio src="music/door.mp3" id="door" class="bg_music"></audio>
+<audio src="music/meow.mp3" id="meow" class="bg_music"></audio>
+<audio src="music/tumbleweed.mp3" id="tumble" class="bg_music"></audio>
+
+</body>
+</html>

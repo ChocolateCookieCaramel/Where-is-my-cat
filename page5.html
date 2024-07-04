@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#clocktick').get(0).play();
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+
+
+	$('#clocktick').prop("volume", 0.2);
+
+	setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+	$('img#hunter').width(200).height(210).css({left:200});
+
+   //top arrow
+    $('img#arrowt').click(function(){
+		window.location="bedroom.html";
+		storeSound();
+    })
+	.mouseover(function(){
+      $('#click').get(0).play();
+     }); 
+	 
+	 //bottom arrow
+	$('img#arrowd').click(function(){
+		window.location="bathroom.html";
+		storeSound();
+    })
+	.mouseover(function(){
+     $('#click').get(0).play();
+      });
+	  
+	//right arrow
+	$('img#arrowr').click(function(){
+		window.location="kitchen.html";
+		storeSound();
+    })
+   .mouseover(function(){
+   $('#click').get(0).play();
+    });
+
+//squares
+$('div#square1').click(events_handler1);
+	var events_counter1 = 0;
+        function events_handler1() {
+			events_counter1++;
+		
+	if (events_counter1==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Hmm I don\'t see her here.</p>');
+		}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Why would I double check here?</p>');
+		}
+	}
+		
+$('div#square2').click(events_handler2);
+	var events_counter2 = 0;
+       function events_handler2() {
+			events_counter2++;
+		
+	if (events_counter2==1){
+		$('div#dialog').html('<p><b>Hunter:</b> I wonder where she would be.</p>');
+		}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> There\'s literally no point on double checking..</p>');
+		}
+	}
+		
+$('div#square3').click(events_handler3);
+	var events_counter3 = 0;
+		function events_handler3() {
+			events_counter3++;
+		
+	if (events_counter3==1){
+		$('div#dialog').html('<p><b>Hunter:</b>-___-</p>');
+		}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Yeah because there is soo much room to hide.. -_-</p>');
+		}
+	}
+	
+})
+</script>
+</head>
+<body>
+
+<div id="stage3">
+		<img src="" id="vOn"/>
+		<div class="square" id="square1"></div>
+		<div class="square" id="square2"></div>
+		<div class="square" id="square3"></div>
+	<img src="images/arrowt.png" id="arrowt"/>
+	<img src="images/arrowd.png" id="arrowd"/>
+	<img src="images/arrowr.png" id="arrowr"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+		<div id="dialog"><p>Find the kitty. Press the arrow keys to look around the house and press the blue squares to check where the kitty is hiding.</p></div>
+</div>
+
+<audio loop src="music/clockticking.mp3" id="clocktick" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+
+</body>
+</html>

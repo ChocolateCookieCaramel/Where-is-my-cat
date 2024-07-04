@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+	
+		function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#park').get(0).play();//background sound
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+	
+	$('img#hunter').css({left:520});
+
+	$('#carbet').one('click',function(){
+	  $('#key').width(20)
+		.animate({left:630, top:340});
+
+			$('div#dialog').html('<p>Good you had found the key! Now drag it into the keyhole.</p>');
+	});
+	
+	
+$('#key').draggable({
+revert:'invalid',
+containment: 'parent'
+});
+
+	$('img#keyhole1').droppable({
+	
+	drop:function(event,ui){
+		$('div#dialog').html('<p>Hunter: It worked! Let\'s find my cat.</p>');
+			ui.draggable.fadeOut(1000, function(){
+   setTimeout(function(){
+                     window.location = 'pass9.html';
+					 storeSound(); 
+                      },2000) ;                 
+        });
+     }
+
+  })
+
+
+});
+	
+
+</script>
+</head>
+<body>
+<div id="stage13">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/carbet.png" id="carbet"/>
+		<div id="dialog"><p>Look for the spare key infront of the house.</p></div>
+	<img src="images/key.png" id="key"/>
+	<img src="images/keyhole1.png" id="keyhole1"/>
+</div>
+
+<audio loop src="music/park.mp3" id="park" class="bg_music"></audio>
+
+</body>
+</html>

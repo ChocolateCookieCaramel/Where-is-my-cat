@@ -1,0 +1,1665 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+	setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+//editing chracters
+	$('img#hunter').css({left:150});
+	$('img#rachael').css({transform:'scalex(-1'});
+	$('img#rachael').css({transform:'scalex(-1'});
+
+//sound
+	$('#fightingmusic').prop("volume", 0.3);
+	
+
+ function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+	$('#fightingmusic').get(0).play();//background sound
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+var event_counter = 0;
+var event_counter1 = 0;
+
+$('.fightin').mouseover(function(){
+      $('#click').get(0).play();
+     });
+
+$('img#hunter4').hide();
+$('img#rachael1').hide();
+$('img#rachael2').hide();
+
+
+	$('button#punch').click(event_handler);
+		function event_handler() {
+			event_counter++;
+	
+	if (event_counter==1){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael').show();
+		$('img#rachael').css({left:290});
+		$('img#rachael').animate({left:350}, {duration:200});
+		$('img#hunter1').animate({left:340}, {duration:200});
+		$('img#hunter').hide();
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#hunter').css({left:300});
+		$('img#rachael2').show();	
+		$('img#rachael2').css({transform:'scalex(-1'});
+		$('img#rachael2').css({left:230, top:250});
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#rachael2').css('zIndex', '2');
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+	
+	
+	if (event_counter==2){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==3){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==4){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==5){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==6){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==7){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==8){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==9){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==10){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==11){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+
+	if (event_counter==12){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==13){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==14){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==15){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==16){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==17){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==18){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==19){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==20){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==21){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+
+	if (event_counter==22){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter==23){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+    }
+	
+	if (event_counter==24){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+    }
+	
+	if (event_counter==25){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+    }
+	
+	if (event_counter==26){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+    }
+	
+	if (event_counter==27){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+    }
+	
+	if (event_counter==28){
+		$('#oww').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').show();
+		$('img#hunter5').hide();
+		$('img#rachael1').hide();
+		$('img#hunter4').hide();
+		$('img#hunter1').show();
+		$('img#hunter1').css({left:270});
+		$('img#rachael2').hide();
+		$('img#hunter').hide();
+        $('img#rachael').css({left:290});
+		$('img#hunter1').animate({left:340}, {duration:200});
+        $('img#rachael').animate({left:350}, {duration:200});		
+		$('img#hunter').css('zIndex', '1');
+		$('img#rachael2').css('zIndex', '0');
+		$('div#teacherhp').animate({width:"-=0.4%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#punchs').get(0).play();
+		$('img#rachael').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').show();
+		$('img#rachael2').show();	
+		$('img#rachael2').css('zIndex', '2');
+		$('img#rachael2').animate({left:250}, {duration:200});
+		$('img#hunter').animate({left:250}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.4%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+    }
+}
+	
+		function testfordeath() {
+		if( $('div#hunterhp').width() <= 0 && $('div#teacherhp').width() <= 0 ) {
+			setTimeout(function(){	window.location="fail5.html";
+			storeSound(); 
+			}, 500);
+		}
+		else if( $('div#teacherhp').width() <= 0 ) {
+			setTimeout(function(){window.location="pass7.html";
+			storeSound(); 
+			}, 500);
+		}
+	}
+
+		$('button#kick').click(event_handler1);
+			function event_handler1() {
+				event_counter1++;
+				
+	$('img#rachael1').css({left:300});
+	$('img#hunter4').css({left:270});
+	
+	if (event_counter1==1){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael2').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();	
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+
+	if (event_counter1==2){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter5').hide();
+		$('img#hunter4').show();
+        $('img#hunter4').css({left:270});
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+		
+		
+
+
+		setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show()
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+	if (event_counter1==3){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();	
+		$('img#hunter5').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play()
+		$('#kicks').get(0).play()
+		$('img#rachael').hide()
+		$('img#rachael1').show()
+		$('img#rachael1').css({transform:'scalex(-1'})
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show()
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270})
+		$('img#hunter4').hide()
+		$('img#rachael1').animate({left:340}, {duration:200})
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==4){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter1').hide();
+		$('img#hunter5').hide();
+		$('img#hunter').hide();	
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+    if (event_counter1==5){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+     if (event_counter1==6){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==7){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==8){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==9){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==10){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==11){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==12){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+    if (event_counter1==13){
+		$('#oww').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').show();
+		$('img#rachael1').hide();
+		$('img#rachael2').hide();
+		$('img#hunter5').hide();
+		$('img#hunter1').hide();
+		$('img#hunter').hide();
+		$('img#hunter4').show();
+		$('img#hunter4').animate({left:300}, {duration:200});
+		$('img#hunter4').css({left:270});
+		$('img#rachael').animate({left:320}, {duration:200});
+		$('img#hunter4').css('zIndex', '1');
+		$('div#teacherhp').animate({width:"-=0.9%"} ,{duration:0}
+		).effect( "shake", {times:2}, 0 );
+
+	setTimeout(function(){ 
+		$('#ouch').get(0).play();
+		$('#kicks').get(0).play();
+		$('img#rachael').hide();
+		$('img#rachael1').show();
+		$('img#rachael1').css({transform:'scalex(-1'});
+		$('img#rachael1').css('zIndex', '2');
+		$('img#hunter5').show();
+		$('img#hunter5').css('zIndex', '1');
+		$('img#hunter5').css({left:270});
+		$('img#hunter4').hide();
+		$('img#rachael1').animate({left:340}, {duration:200});
+		$('div#hunterhp').animate({width:"-=0.6%"} ,{duration:0,
+		complete: function() {
+		     testfordeath();
+			 }
+		
+		}).effect( "shake", {times:2}, 0 ); 
+     }, 500);
+}
+
+}
+
+$('.fightin').click(function(){
+    var button = $(this);
+    button.prop('disabled',true);
+    window.setTimeout(function(){ 
+        button.prop('disabled',false);
+    },1000);
+});
+
+ 
+
+});
+	
+
+</script>
+</head>
+<body>
+
+<div id="stage">
+	<img src="" id="vOn"/>
+		<div id="fighttext">FIGHT!</div>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/maincharacter4.png" id="hunter4"/>
+	<img src="images/maincharacter3.png" id="hunter1"/>
+	<img src="images/maincharacter5.png" id="hunter5"/>
+	<img src="images/rachael.png" id="rachael"/>
+	<img src="images/rachaelkick.png" id="rachael1"/>
+	<img src="images/rachaelpunch.png" id="rachael2"/>
+		<div id="dialog"></div>
+		<button id="punch" class="fightin">Punch</button>
+		<button id="kick" class="fightin">Kick</button>
+		<div id="teacherhp"></div>
+		<div id="teacherhpu"></div>
+		<div id="hunterhp"></div>
+		<div id="hunterhpu"></div>
+</div>
+
+<audio loop src="music/fightingmusic.mp3" id="fightingmusic" class="bg_music"></audio>
+<audio src="music/punch.mp3" id="punchs" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+<audio src="music/ouch.mp3" id="ouch" class="bg_music"></audio>
+<audio src="music/oww.mp3" id="oww" class="bg_music"></audio>
+<audio src="music/kick.mp3" id="kicks" class="bg_music"></audio>
+
+</body>
+</html>

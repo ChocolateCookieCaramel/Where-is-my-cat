@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() { 
+
+setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+
+
+
+$("img#cat").hide();
+
+	function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+	}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#night').get(0).play();//plays audio
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+//bottom arrow 
+$("img#arrowd").click(function(){
+		window.location="page5.html";
+		storeSound();
+    })
+	
+	  .mouseover(function(){
+      $('#click').get(0).play();
+      });
+	
+//squares
+ $('div#square4').click(events_handler4);
+   var events_counter4 = 0;
+		function events_handler4() {
+		events_counter4++;
+		
+		if (events_counter4==1){
+		$('div#dialog').html('<p><b>Hunter:</b> She isn\'t there.</p>');
+	}
+		else{
+		$('div#dialog').html('<p><b>Hunter:</b> Kitty where are you??</p>');
+		}
+	}
+		
+$('div#square5').click(events_handler5);
+    var events_counter5 = 0;
+		function events_handler5() {
+		events_counter5++;
+		
+	if (events_counter5==1){
+		$('div#dialog').html('<p><b>Hunter:</b> She\'s not in that small drawer.</p>');
+		}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> I think I saw the drawer the first time. -_-</p>');
+		}
+	}
+	  
+ $('div#square6').click(events_handler6);
+    var events_counter6 = 0;
+		function events_handler6() {
+		events_counter6++;
+		
+	if (events_counter6==1){
+		$('div#dialog').html('<p><b>Hunter:</b> She\'s not there. </p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> I\'m pretty sure me checking it the first time is enough let alone this drawer is glass. -_-</p>');
+		}
+	}
+	  
+$('div#square7').click(events_handler7);
+      var events_counter7 = 0;
+		function events_handler7() {
+		events_counter7++;
+		
+	if (events_counter7==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Kitty kitty come here</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Hmmm.. I wonder where she would be.. I bet she\'s hungry :(</p>');
+		}
+	}
+	  
+$('div#square8').click(events_handler8);
+     var events_counter8 = 0;
+		function events_handler8() {
+		events_counter8++;
+		
+	if (events_counter8==1){
+		$('div#dialog').html('<p><b>Hunter:</b> She\'s not on the bed... I\'ll check under the bed.</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> Ohh there you are kitty!!!</p>');
+		$('img#cat').width(100).height(100).animate({left:400},{duration:0}).fadeIn()
+		$('#meow').get(0).play();
+		storeSound();
+		setTimeout(function(){ window.location="pass2.html"; }, 2000);
+		
+		}
+	}
+		
+ $('div#square9').click(events_handler9);
+     var events_counter9 = 0;
+		function events_handler9() {
+		events_counter9++;
+		
+	if (events_counter9==1){
+		$('div#dialog').html('<p><b>Hunter:</b> Come I have food!!!</p>');
+	}
+	else{
+		$('div#dialog').html('<p><b>Hunter:</b> I checked both the desk and the drawer.</p>');
+		}
+	}
+	  
+	
+})
+</script>
+</head>
+<body>
+
+<div id="stage4">
+	<img src="" id="vOn"/>
+	<img src="images/cat.png" id="cat"/>
+		<div class="square" id="square4"></div>
+		<div class="square" id="square5"></div>
+		<div class="square" id="square6"></div>
+		<div class="square" id="square7"></div>
+		<div class="square" id="square8"></div>
+		<div class="square" id="square9"></div>
+	<img src="images/arrowd.png" id="arrowd"/>
+		<div id="dialog"><p>Find the kitty. Press the arrow keys to look around the house and press the blue squares to check where the kitty is hiding.</p></div>
+</div>
+
+<audio src="music/meow.mp3" id="meow" class="bg_music"></audio>
+<audio src="music/click.mp3" id="click" class="bg_music"></audio>
+<audio src="music/night.mp3" id="night" class="bg_music"></audio>
+
+</body>
+</html>

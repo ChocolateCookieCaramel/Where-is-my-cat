@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Where's my cat?!?</title>
+<link href="images/catlogo.png" rel="icon" >
+<link href="styles.css" rel="stylesheet" />
+<script src="jquery-3.6.0.min.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$(document).ready(function() { 
+	setTimeout(function(){ jQuery('body').hide().fadeIn()}, 0);
+	$('img#hunter').width(200).height(250).css({left:100, top:150});
+	$('img#cat').css({ transform: 'scaleX(-1)' });
+	$('img#cat').width(100).height(100).css({left:300});
+	
+	
+
+
+
+
+    function storeSound() {
+		localStorage.setItem('soundState',isPlaying);
+}
+	var isPlaying = localStorage.getItem('soundState');
+		$('#fridge').get(0).play();
+
+	if(isPlaying=='true') {
+
+		$('img#vOn').attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+		$(this).get(0).muted = false;
+	})
+	}else {
+		$('img#vOn').attr('src','images/volumeoff.png');
+		$('.bg_music').each(function() {
+	$(this).get(0).muted = true;
+	})
+}
+	$('img#vOn').click(function() {
+		if(isPlaying) {
+			$(this).attr('src','images/volumeoff.png');
+			$('.bg_music').each(function() {
+		$(this).get(0).muted = true;
+	})
+		isPlaying = false;
+	} else {
+		$(this).attr('src','images/volumeon.png');
+		$('.bg_music').each(function() {
+			$(this).get(0).muted = false;
+		})
+		isPlaying = true;
+	}
+})
+
+
+	$('#coke,#milk,#bottle,#can,#bubbletea').draggable({
+		revert:'invalid',
+		containment: 'parent'
+	});
+
+
+
+
+	$('img#cat').droppable({
+		drop:function(event,ui){
+			$('div#dialog').html('<p>You chose the ' + ui.draggable.attr('id')+'.</p>');
+			localStorage.setItem('user_choice' , ui.draggable.attr('id'));
+			if(ui.draggable.hasClass('happy_cat') ) {
+				setTimeout(function() {
+					window.location = 'page8.html';
+					storeSound();
+				},1000);
+			} else {
+				setTimeout(function() {
+					window.location = 'page7.html';
+					storeSound();
+				},1000);
+			}
+		}
+	})
+		
+})
+</script>
+</head>
+<body>
+
+<div id="stage5">
+	<img src="" id="vOn"/>
+	<img src="images/MainCharacter.png" id="hunter"/>
+	<img src="images/cat.png" id="cat"/>
+		<div id="dialog"><p>Drag and drop to the kitty the food you think will be apporpiate.<br/> Bottle of Water, Coke, Milk(Lactose), Can of Tuna, or Bubble Tea </p></div>
+	<img src="images/bottle.png" class="drag happy_cat" id="bottle"/>
+	<img src="images/coke.png" class="drag" id="coke"/>
+	<img src="images/can.png" class="drag happy_cat" id="can"/>
+	<img src="images/milk.png" class="drag" id="milk"/>
+	<img src="images/bubbletea.png" class="drag" id="bubbletea"/>
+</div>
+<audio loop src="music/fridge.mp3" id="fridge" class="bg_music"></audio>
+
+</body>
+</html>
